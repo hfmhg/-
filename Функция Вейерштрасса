@@ -1,0 +1,37 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+a = 3
+b = 0.5
+n = 3
+x = 1.
+
+print('a=', a, type(a))
+print('b=', b, type(b))
+print('x=', x, type(x))
+
+w = b ** n * np.cos(a ** n * np.pi * x)
+print('w=', w, type(w))
+
+sw = "b ** i * np.cos(a ** i * np.pi * x)"
+print('sw=', sw, type(sw))
+
+s = sum(eval(sw) for i in range(0, 4))
+print(s)
+
+ss = 0
+for i in range(0, 4):
+    ss += b ** i * np.cos(a ** i * np.pi * x)
+print(ss)
+
+s = sum(eval(sw) for i in range(0, 20))
+print(s)
+
+s = sum(eval(sw) for i in range(0, 50))
+print(s)
+
+dx = 0.000001
+x = np.arange(-2, 2+dx, dx)
+print('x=', x, type(x))
+plt.plot(x, sum(eval(sw) for i in range(0, 50)))
+plt.show()
